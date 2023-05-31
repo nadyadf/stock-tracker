@@ -4,7 +4,8 @@
   "description": "Website yang menyediakan informasi mengenai persediaan baranng di berbagai toko fisik.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-dev": "webpack serve --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "serve": "http-server"
   },
   "author": "",
@@ -22,6 +23,7 @@
     "eslint": "^8.41.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
+    "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.1",
     "style-loader": "^3.3.3",
     "webpack": "^5.84.1",

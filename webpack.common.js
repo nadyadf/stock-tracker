@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const htmlPageNames = ['about', 'category', 'contact', 'index', 'search-result'];
+const htmlPageNames = ['about', 'category', 'contact', 'index', 'search-result', 'single-post'];
 const createMultipleHtmlPlugin = htmlPageNames.map((name) => new HtmlWebpackPlugin({
   template: path.resolve(__dirname, `src/templates/${name}.html`),
   filename: `${name}.html`,
