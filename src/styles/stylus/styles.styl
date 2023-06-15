@@ -1,0 +1,78 @@
+.developer
+   display: flex
+   justify-content: center
+   align-items: center
+   background-color: salmon;
+   border-radius: 50%;
+   width: 45px;
+   height: 45px;
+   color: white
+   background: #34495e
+   position: relative
+   z-index: 100
+   perspective: 1000px
+   &:hover
+     cursor: pointer
+     border-top-left-radius: unset
+     border-top-right-radius: unset
+
+   &:hover .social-media a
+     display: block
+
+   figure
+     width: 45px
+     height: 45px
+     border-radius: 50%
+     overflow: hidden
+     position: absolute
+     top: 0
+
+     img
+      width: 100%
+      height: 100%
+      object-fit: cover
+
+.social-media
+   position: absolute
+   display: flex
+   flex-direction: column-reverse
+   bottom : 100%
+   left: 0
+   font-size: 1em;
+   width: 100%
+   perspective: 1000px
+   z-index: -1
+   a
+    display: none
+    color: white
+    background-color: #34495e
+    padding: 8px
+    text-align: center
+    font-size: 16px
+    opacity: 0
+    &:hover
+      background-color: #2980b9
+
+.developer
+  for num in (1..4)
+     .social-media a:nth-child({num})
+       transform-origin: bottom center
+       animation: scaleZ 300ms (num * 60ms) ease-in-out forwards
+
+
+
+@keyframes scaleZ {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  80% {
+    transform: scale(1.07);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

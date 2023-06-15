@@ -1,8 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
-const htmlPageNames = ['about', 'category', 'contact', 'index', 'search-result', 'single-post'];
+const htmlPageNames = ['about', 'category', 'contact', 'index', 'search-result'];
 const createMultipleHtmlPlugin = htmlPageNames.map((name) => new HtmlWebpackPlugin({
   template: path.resolve(__dirname, `src/templates/${name}.html`),
   filename: `${name}.html`,
@@ -20,13 +21,26 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
           {
             loader: 'style-loader',
           },
           {
             loader: 'css-loader',
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: () => [
+                  autoprefixer,
+                ],
+              },
+            },
+          },
+          {
+            loader: 'sass-loader',
           },
         ],
       },
