@@ -1,5 +1,5 @@
 import CreateProductItem from './create-product-item';
 import CreateCategoryLabel from './create-category-label';
-import CreateDropdownFilter from './create-dropdown-filter';
+import CreateSortFeatureTemplate from './create-sort-feature-template';
 
-export { CreateProductItem, CreateCategoryLabel, CreateDropdownFilter };
+export { CreateProductItem, CreateCategoryLabel, CreateSortFeatureTemplate };

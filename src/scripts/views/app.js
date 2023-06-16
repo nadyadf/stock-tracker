@@ -5,8 +5,9 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 class App {
   constructor({
-    button, drawer, content,
+    className, button, drawer, content,
   }) {
+    this._className = className;
     this._button = button;
     this._drawer = drawer;
     this._content = content;
@@ -16,6 +17,7 @@ class App {
 
   _initialAppShell() {
     DrawerInitiator.init({
+      className: this._className,
       button: this._button,
       drawer: this._drawer,
       content: this._content,

@@ -1,5 +1,8 @@
 const DrawerInitiator = {
-  init({ button, drawer, content }) {
+  init({
+    className, button, drawer, content,
+  }) {
+    this._className = className;
     button.addEventListener('click', (event) => {
       this._toggleDrawer(event, drawer);
     });
@@ -11,12 +14,12 @@ const DrawerInitiator = {
 
   _toggleDrawer(event, drawer) {
     event.stopPropagation();
-    drawer.classList.toggle('responsive');
+    drawer.classList.toggle(this._className);
   },
 
   _closeDrawer(event, drawer) {
     event.stopPropagation();
-    drawer.classList.remove('responsive');
+    drawer.classList.remove(this._className);
   },
 };
 

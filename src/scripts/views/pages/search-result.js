@@ -1,6 +1,7 @@
 import StockTrackerResource from '../../data/stocktracker-resource';
 import UrlParser from '../../routes/url-parser';
-import { CreateProductItem, CreateCategoryLabel, CreateDropdownFilter } from '../templates';
+import DrawerInitiator from '../../utils/drawer-initiator';
+import { CreateProductItem, CreateCategoryLabel, CreateSortFeatureTemplate } from '../templates';
 
 const SearchResult = {
   async render() {
@@ -17,23 +18,21 @@ const SearchResult = {
           </div>
         </div>
       </section>
-      <h2>Hasil Pencarian: <span id="keyword"></span></h2>
-      <p class="result-total"></result>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown button
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-        </div>
+      <h2 class="title-section">Hasil Pencarian: <span id="keyword"></span></h2>
+      <p class="result-total"></p>
+      ${CreateSortFeatureTemplate()}
       <section class="result"></section>
     `;
   },
 
   async afterRender() {
+    DrawerInitiator.init({
+      className: 'show',
+      button: document.querySelector('.btn-sort'),
+      drawer: document.querySelector('.sort-mini-modal'),
+      content: document.querySelector('#main'),
+    });
+
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const { keyword, resource } = url;
     const keywordWithoutEncoding = keyword.replace('%20', ' ');

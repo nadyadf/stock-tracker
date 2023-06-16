@@ -10,6 +10,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import App from './views/app';
 
 const app = new App({
+  className: 'responsive',
   button: document.querySelector('#app-bar--toggler'),
   drawer: document.querySelector('#app-bar'),
   content: document.querySelector('#main'),
