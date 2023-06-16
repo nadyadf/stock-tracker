@@ -1,0 +1,98 @@
+/*--------------------------------------------------------------
+# App Bar
+--------------------------------------------------------------*/
+@media screen and (max-width: 920px) {
+  .app-bar--navigation ul {
+    column-gap: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .app-bar--brand h1 {
+    font-size: 27px;
+  }
+
+  .app-bar--navigation ul {
+    column-gap: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-bar--brand h1 {
+    font-size: 24px;
+  }
+
+  .app-bar--navigation ul {
+    column-gap: 5px;
+  }
+
+  .app-bar--navigation a {
+    font-size: 14px;
+  }
+
+  #btn-login {
+    padding: 5px 8px;
+  }
+}
+
+/**** Mobile Nav ****/
+@media (max-width: 576px) {
+  .app-bar {
+    position: relative;
+  }
+
+  .app-bar--navigation {
+    display: none;
+  }
+
+  .app-bar .app-bar--toggler {
+    display: block;
+    margin-right: 5px;
+  }
+
+  #btn-login {
+    position: absolute;
+    right: 40px;
+  }
+
+  .app-bar.responsive {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+  }
+
+  .app-bar.responsive .app-bar--brand {
+    width: fit-content;
+  }
+
+  .app-bar.responsive .app-bar--navigation {
+    display: block;
+    grid-column-start: 1;
+    grid-column-end: 6;
+  }
+
+  .app-bar.responsive .app-bar--navigation ul{
+    margin-right: 0;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: block;
+    flex-direction: column;
+  }
+
+  .app-bar.responsive #btn-login {
+    top: 4px;
+  }
+
+  .app-bar.responsive .app-bar--toggler {
+    margin-right: -50px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Section Search
+--------------------------------------------------------------*/
+@media screen and (max-width: 576px) {
+  section#search {
+    align-items: flex-start;
+    padding: 0;
+  }
+}

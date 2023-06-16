@@ -3,12 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
-const htmlPageNames = ['about', 'category', 'contact', 'index', 'search-result'];
-const createMultipleHtmlPlugin = htmlPageNames.map((name) => new HtmlWebpackPlugin({
-  template: path.resolve(__dirname, `src/templates/${name}.html`),
-  filename: `${name}.html`,
-}));
-
 module.exports = {
   entry: {
     app: path.resolve(__dirname, 'src/scripts/index.js'),
@@ -59,5 +53,5 @@ module.exports = {
         },
       ],
     }),
-  ].concat(createMultipleHtmlPlugin),
+  ],
 };

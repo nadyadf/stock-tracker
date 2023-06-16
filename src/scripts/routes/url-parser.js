@@ -7,7 +7,7 @@ const UrlParser = {
   },
 
   parseActiveUrlWithoutCombiner() {
-    const url = window.location.hash.slice(1).toLowerCase();
+    const url = window.location.hash.slice(1);
     return this._urlSplitter(url);
   },
 
@@ -15,7 +15,7 @@ const UrlParser = {
     const urlsSplits = url.split('/');
     const resource = urlsSplits[1];
     return {
-      resource: resource ? resource.split('?')[0] : null,
+      resource: resource ? resource.split('?')[0].toLowerCase() : null,
       keyword: resource ? resource.split('?keyword=')[1] : null,
     };
   },

@@ -1,17 +1,13 @@
 import 'regenerator-runtime';
+// import '@popperjs/core';
+// import 'bootstrap/js/dist/dropdown';
 import '../styles/css/main.css';
 import '../styles/scss/styles.scss';
 import '../styles/css/variables.css';
+import '../styles/css/responsive.css';
 import '../styles/stylus/dist/styles.css';
-// import * as bootstrap from 'bootstrap';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import App from './views/app';
-// import * as mdb from 'mdb-ui-kit';
-
-// window.mdb = mdb;
-// import AOS from 'aos/dist/aos';
-
-// AOS.init();
 
 const app = new App({
   button: document.querySelector('#app-bar--toggler'),

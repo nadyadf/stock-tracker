@@ -75,10 +75,9 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Header
+# App Bar
 --------------------------------------------------------------*/
 .app-bar {
-  /* height: 70px; */
   transition: all 0.5s;
   z-index: 1;
   background: #f2f2f2;
@@ -93,16 +92,12 @@ h6 {
   left: 0;
 }
 
-
-/* .header.sticked {
-  height: 60px;
-} */
-
 .app-bar--brand h1 {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 700;
   color: var(--color-default);
   font-family: var(--font-primary);
+  margin-left: 15px;
 }
 
 .app-bar--toggler {
@@ -131,207 +126,21 @@ h6 {
   margin-right: 10px;
 }
 
-/*--------------------------------------------------------------
-# Desktop Navigation
---------------------------------------------------------------*/
-@media (min-width: 1280px) {
-
-  /* .navbar {
-    padding: 0;
-    margin-bottom: 0;
-    border-radius: 0;
-  }
-
-  .navbar ul {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    list-style: none;
-    align-items: center;
-  }
-
-  .navbar li {
-    position: relative;
-  }
-
-  .navbar a,
-  .navbar a:focus {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    text-decoration: none;
-    padding: 10px 0 10px 30px;
-    font-family: var(--font-default);
-    font-size: 16px;
-    font-weight: 500;
-    color: rgba(var(--color-default-rgb), 1);
-    white-space: nowrap;
-    transition: 0.3s;
-  }
-
-  .navbar a i,
-  .navbar a:focus i {
-    font-size: 12px;
-    line-height: 0;
-    margin-left: 5px;
-  }
-
-  .navbar a:hover,
-  .navbar .active,
-  .navbar .active:focus,
-  .navbar li:hover>a {
-    color: var(--color-default);
-  } */
-}
-
 .mobile-nav-toggle {
   display: none;
 }
 
-/*--------------------------------------------------------------
-# Mobile Navigation
---------------------------------------------------------------*/
-@media (max-width: 576px) {
-  .app-bar {
-    position: relative;
-  }
-  .app-bar--navigation {
-    display: none;
-  }
-
-  .app-bar .app-bar--toggler {
-    display: block;
-    margin-right: 5px;
-  }
-
-  #btn-login {
-    position: absolute;
-    right: 50px;
-  }
-
-
-.app-bar.responsive {
-  display: grid;
-  grid-template-columns: 4fr 1fr;
-}
-
-.app-bar.responsive .app-bar--brand {
-  width: fit-content;
-}
-.app-bar.responsive .app-bar--navigation {
-  display: block;
-  grid-column-start: 1;
-  grid-column-end: 6;
-}
-.app-bar.responsive .app-bar--navigation ul{
-  margin-right: 0;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  display: block;
-  flex-direction: column;
-}
-.app-bar.responsive #btn-login {
-  top: 2px;
-}
-.app-bar.responsive .app-bar--toggler {
-  margin-right: -50px;
-}
-
-  /* .navbar {
-    padding: 0;
-    z-index: 9997;
-  }
-
-  .navbar ul {
-    display: none;
-    position: absolute;
-    inset: 55px 15px 15px 15px;
-    padding: 10px 0;
-    margin: 0;
-    border-radius: 10px;
-    background-color: var(--color-white);
-    overflow-y: auto;
-    transition: 0.3s;
-    z-index: 9998;
-  }
-
-  .navbar a,
-  .navbar a:focus {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    font-family: var(--font-primary);
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--color-primary);
-    white-space: nowrap;
-    transition: 0.3s;
-  }
-
-  .navbar a i,
-  .navbar a:focus i {
-    font-size: 12px;
-    line-height: 0;
-    margin-left: 5px;
-  }
-
-  .navbar a:hover,
-  .navbar .active,
-  .navbar .active:focus,
-  .navbar li:hover>a {
-    color: var(--color-primary);
-  }
-
-  .mobile-nav-toggle {
-    display: inline-block;
-    color: var(--color-secondary);
-    font-size: 28px;
-    cursor: pointer;
-    line-height: 0;
-    transition: 0.5s;
-  }
-
-  .mobile-nav-toggle.bi-x {
-    color: var(--color-black);
-  }
-
-  .mobile-nav-active {
-    overflow: hidden;
-  }
-
-  .mobile-nav-active .mobile-nav-toggle {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    z-index: 9999;
-    color: var(--color-white);
-  }
-
-  .mobile-nav-active .navbar {
-    position: fixed;
-    overflow: hidden;
-    inset: 0;
-    background: rgba(var(--color-black-rgb), 0.6);
-    transition: 0.3s;
-  }
-
-  .mobile-nav-active .navbar>ul {
-    display: block;
-  } */
-}
-
-/*--------------------------------------------------------------
-# Sections & Section Header
---------------------------------------------------------------*/
-section {
-  padding: 40px 0;
+section#search {
   min-height: 100vh;
-  overflow: hidden;
-  scroll-margin-top: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+section {
+  padding: 40px 0;
+  overflow: hidden;
+  scroll-margin-top: 70px;
 }
 
 /*--------------------------------------------------------------
@@ -346,7 +155,6 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  /* row-gap: 2rem; */
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -388,17 +196,6 @@ h2
    text-align: center;
    margin-bottom: 5rem;
 }
-
-/* h2:after
-{
-   display: block;
-   height: 2px;
-   background-color: #e67e22;
-   content: " ";
-   width: 100px;
-   margin: 0 auto;
-   margin-top: 30px;
-} */
 
 .row
 {
@@ -530,4 +327,69 @@ li.developer {
 
 .copyright {
   width: fit-content;
+}
+
+/*--------------------------------------------------------------
+# Category Section
+--------------------------------------------------------------*/
+.categories {
+  margin-top: 2.5rem;
+  background-color: aquamarine;
+  padding: 25px 20px;
+}
+
+.categories h2 {
+  font-size: 1.5em;
+  width: fit-content;
+}
+
+.categories-container {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  padding: 5px 10px;
+  border-radius: 7px;
+  background-color: bisque;
+}
+
+.category-item a {
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+}
+
+/*--------------------------------------------------------------
+# Search Section - Search Result Page
+--------------------------------------------------------------*/
+section#search-result--search {
+  min-height: unset;
+  padding: 40px 15px;
+  display: flex;
+  justify-content: center;
+}
+
+#search-result--search .input-group {
+  width: 50%;
+  max-width: 500px;
+}
+
+/*--------------------------------------------------------------
+# Result Section
+--------------------------------------------------------------*/
+.result-total {
+  text-align: center;
+}
+.result {
+  margin: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 8px;
+}
+
+.dropdown {
+  text-align: center;
 }
