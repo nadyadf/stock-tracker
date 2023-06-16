@@ -16,13 +16,14 @@ const Search = {
   },
 
   async afterRender() {
-    // const sectionContainer = document.querySelector('#search');
-
     document.querySelector('.bi-search').addEventListener('click', (e) => {
       e.preventDefault();
       const currentUrl = window.location.href;
       const keyword = document.querySelector('.form-control').value;
-      window.location.replace(`${currentUrl}#/hasil-pencarian?keyword=${keyword}`);
+      if (keyword === '') {
+        return;
+      }
+      window.location.replace(`${currentUrl}#/hasil_pencarian?keyword=${keyword}`);
     });
   },
 };

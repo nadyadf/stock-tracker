@@ -5,7 +5,8 @@ import SearchResult from '../views/pages/search-result';
 const routes = {
   404: NotFoundPage,
   '/': Search,
-  '/hasil-pencarian?keyword': SearchResult,
+  '/hasil_pencarian?keyword': SearchResult,
+  '/hasil_pencarian?category_id': SearchResult,
 };
 
 export default routes;

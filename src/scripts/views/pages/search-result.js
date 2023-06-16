@@ -18,7 +18,7 @@ const SearchResult = {
           </div>
         </div>
       </section>
-      <h2 class="title-section">Hasil Pencarian: <span id="keyword"></span></h2>
+      <h2 class="title-section">Hasil Pencarian: <span id="search-type"></span></h2>
       <p class="result-total"></p>
       ${CreateSortFeatureTemplate()}
       <section class="result"></section>
@@ -34,26 +34,42 @@ const SearchResult = {
     });
 
     const url = UrlParser.parseActiveUrlWithoutCombiner();
-    const { keyword, resource } = url;
-    const keywordWithoutEncoding = keyword.replace('%20', ' ');
+    const { keyword, resource, categoryId } = url;
+
+    if (keyword) {
+      const keywordWithoutEncoding = keyword.replace('%20', ' ');
+
+      document.querySelector('#keyword-input').value = keywordWithoutEncoding;
+      document.querySelector('#search-type').innerText = keywordWithoutEncoding;
+
+      // Fetch product from database by query params
+      const searchResults = await StockTrackerResource.searchProductResult(keyword);
+      const resultContainer = document.querySelector('.result');
+      document.querySelector('.result-total').innerText = `Total: ${searchResults.length}`;
+      searchResults.forEach((product) => {
+        resultContainer.innerHTML += CreateProductItem(product);
+      });
+    } else {
+      // Fetch product from database by category
+      const searchResults = await StockTrackerResource.getProductsByCategory(categoryId);
+      const firstProduct = searchResults[0];
+      const categoryName = firstProduct ? firstProduct.category_name : '';
+      console.log(categoryName);
+
+      document.querySelector('#search-type').innerText = categoryName ? `kategori ${categoryName}` : '';
+
+      const resultContainer = document.querySelector('.result');
+      document.querySelector('.result-total').innerText = `Total: ${searchResults.length}`;
+      searchResults.forEach((product) => {
+        resultContainer.innerHTML += CreateProductItem(product);
+      });
+    }
 
     // Show Categories
     const categoriesContainer = document.querySelector('.categories-container');
     const categories = await StockTrackerResource.showAllCategories();
     categories.forEach((category) => {
       categoriesContainer.innerHTML += CreateCategoryLabel(category);
-    });
-
-    document.querySelector('#keyword-input').value = keywordWithoutEncoding;
-    document.querySelector('#keyword').innerText = keywordWithoutEncoding;
-
-    // Fetch Product Data from Database
-    const searchResults = await StockTrackerResource.searchProductResult(keyword);
-    console.log(searchResults);
-    const resultContainer = document.querySelector('.result');
-    document.querySelector('.result-total').innerText = `Total: ${searchResults.length}`;
-    searchResults.forEach((product) => {
-      resultContainer.innerHTML += CreateProductItem(product);
     });
 
     document.querySelector('.bi-search').addEventListener('click', (e) => {

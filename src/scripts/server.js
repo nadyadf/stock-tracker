@@ -12,9 +12,9 @@ const init = async () => {
     method: 'GET',
     path: '/search_products',
     handler: async (request, h) => {
-      const keywords = request.query.keyword;
+      const { keyword } = request.query;
       const results = await db('table_product')
-        .whereILike('name', `%${keywords}%`);
+        .whereILike('name', `%${keyword}%`);
       const response = h.response(results);
       return response;
     },
@@ -23,9 +23,23 @@ const init = async () => {
   server.route({
     method: 'GET',
     path: '/product_categories',
-    handler: async (req, h) => {
+    handler: async (request, h) => {
       const categories = await db('category');
       const response = h.response(categories);
+      return response;
+    },
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/get_products_by_category',
+    handler: async (request, h) => {
+      const { categoryId } = request.query;
+      const results = await db
+        .from('table_product')
+        .innerJoin('category', 'table_product.category_id', 'category.id')
+        .where('category_id', categoryId);
+      const response = h.response(results);
       return response;
     },
   });

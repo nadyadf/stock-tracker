@@ -14,15 +14,19 @@ const UrlParser = {
   _urlSplitter(url) {
     const urlsSplits = url.split('/');
     const resource = urlsSplits[1];
+    // console.log(resource);
     return {
       resource: resource ? resource.split('?')[0].toLowerCase() : null,
       keyword: resource ? resource.split('?keyword=')[1] : null,
+      categoryId: resource ? resource.split('?category_id=')[1] : null,
     };
   },
 
   _urlCombiner(splitedUrl) {
+    // console.log(splitedUrl.categoryId);
     return (splitedUrl.resource ? `/${splitedUrl.resource}` : '/')
-    + (splitedUrl.keyword ? '?keyword' : '');
+    + (splitedUrl.keyword ? '?keyword' : '')
+    + (splitedUrl.categoryId ? '?category_id' : '');
   },
 };
 

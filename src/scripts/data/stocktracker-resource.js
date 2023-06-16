@@ -12,6 +12,12 @@ class StockTrackerResource {
     const responseJson = await response.json();
     return responseJson;
   }
+
+  static async getProductsByCategory(categoryId) {
+    const response = await fetch(REST_API_ENDPOINT.PRODUCTS_BY_CATEGORY(categoryId));
+    const responseJson = await response.json();
+    return responseJson;
+  }
 }
 
 export default StockTrackerResource;

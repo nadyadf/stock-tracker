@@ -1,6 +1,6 @@
 const CreateCategoryLabel = (categories) => `
   <div class="category-item">
-    <a href="#">${categories.name}</a>
+    <a href="/#/hasil_pencarian?category_id=${categories.id}">${categories.category_name}</a>
   </div
 `;
 
