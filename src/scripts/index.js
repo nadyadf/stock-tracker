@@ -5,7 +5,7 @@ import '../styles/css/main.css';
 import '../styles/scss/styles.scss';
 import '../styles/css/variables.css';
 import '../styles/css/responsive.css';
-import '../styles/stylus/dist/styles.css';
+import '../styles/css/styles.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import App from './views/app';
 

@@ -33,6 +33,8 @@ const SearchResult = {
       content: document.querySelector('#main'),
     });
 
+    const resultContainer = document.querySelector('.result');
+
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const { keyword, resource, categoryId } = url;
 
@@ -44,7 +46,7 @@ const SearchResult = {
 
       // Fetch product from database by query params
       const searchResults = await StockTrackerResource.searchProductResult(keyword);
-      const resultContainer = document.querySelector('.result');
+
       document.querySelector('.result-total').innerText = `Total: ${searchResults.length}`;
       searchResults.forEach((product) => {
         resultContainer.innerHTML += CreateProductItem(product);
@@ -54,11 +56,9 @@ const SearchResult = {
       const searchResults = await StockTrackerResource.getProductsByCategory(categoryId);
       const firstProduct = searchResults[0];
       const categoryName = firstProduct ? firstProduct.category_name : '';
-      console.log(categoryName);
 
       document.querySelector('#search-type').innerText = categoryName ? `kategori ${categoryName}` : '';
 
-      const resultContainer = document.querySelector('.result');
       document.querySelector('.result-total').innerText = `Total: ${searchResults.length}`;
       searchResults.forEach((product) => {
         resultContainer.innerHTML += CreateProductItem(product);
@@ -76,6 +76,27 @@ const SearchResult = {
       e.preventDefault();
       const keywordInput = document.querySelector('.form-control').value;
       window.location.replace(`/#/${resource}?keyword=${keywordInput}`);
+    });
+
+    document.querySelector('.sort-item.price').addEventListener('click', async (e) => {
+      e.preventDefault();
+      resultContainer.innerHTML = '';
+
+      if (keyword) {
+        const searchResults = await StockTrackerResource.sortProductsByPrice('keyword', keyword);
+        document.querySelector('.result-total').innerText = `Total: ${searchResults.length}`;
+
+        searchResults.forEach((product) => {
+          resultContainer.innerHTML += CreateProductItem(product);
+        });
+      } else {
+        const searchResults = await StockTrackerResource.sortProductsByPrice('categoryId', categoryId);
+        document.querySelector('.result-total').innerText = `Total: ${searchResults.length}`;
+
+        searchResults.forEach((product) => {
+          resultContainer.innerHTML += CreateProductItem(product);
+        });
+      }
     });
   },
 };

@@ -35,11 +35,34 @@ const init = async () => {
     path: '/get_products_by_category',
     handler: async (request, h) => {
       const { categoryId } = request.query;
-      const results = await db
-        .from('table_product')
+      const results = await db('table_product')
         .innerJoin('category', 'table_product.category_id', 'category.id')
         .where('category_id', categoryId);
       const response = h.response(results);
+      return response;
+    },
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/sort_products_by_price',
+    handler: async (request, h) => {
+      const { keyword, categoryId } = request.query;
+      let results = '';
+      let response = '';
+
+      if (keyword) {
+        results = await db('table_product')
+          .whereILike('name', `%${keyword}%`)
+          .orderBy('price', 'asc');
+        response = h.response(results);
+      } else {
+        results = await db('table_product')
+          .innerJoin('category', 'table_product.category_id', 'category.id')
+          .where('category_id', categoryId)
+          .orderBy('price', 'asc');
+        response = h.response(results);
+      }
       return response;
     },
   });

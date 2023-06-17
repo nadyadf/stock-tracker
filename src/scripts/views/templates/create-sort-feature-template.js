@@ -5,7 +5,7 @@ const CreateSortFeatureTemplate = () => `
   <div class="sort-mini-modal">
     <h3>Urut berdasarkan</h3>
     <div class="sort-container">
-      <a class="sort-item">
+      <a class="sort-item price">
         <p>Harga termurah</p>
       </a>
       <a class="sort-item">
