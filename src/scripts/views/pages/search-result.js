@@ -106,6 +106,28 @@ const SearchResult = {
         });
       }
     });
+
+    // Sort by stock button
+    sortItemElements[3].addEventListener('click', async (e) => {
+      e.preventDefault();
+      resultContainer.innerHTML = '';
+
+      if (keyword) {
+        searchResults = await StockTrackerResource.sortProductsByStock('keyword', keyword);
+        resultTotal.innerText = `Total: ${searchResults.length}`;
+
+        searchResults.forEach((product) => {
+          resultContainer.innerHTML += CreateProductItem(product);
+        });
+      } else {
+        searchResults = await StockTrackerResource.sortProductsByStock('categoryId', categoryId);
+        resultTotal.innerText = `Total: ${searchResults.length}`;
+
+        searchResults.forEach((product) => {
+          resultContainer.innerHTML += CreateProductItem(product);
+        });
+      }
+    });
   },
 };
 

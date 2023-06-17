@@ -24,6 +24,12 @@ class StockTrackerResource {
     const responseJson = await response.json();
     return responseJson;
   }
+
+  static async sortProductsByStock(searchType, value) {
+    const response = await fetch(REST_API_ENDPOINT.SORT_PRODUCTS_BY_STOCK(searchType, value));
+    const responseJson = await response.json();
+    return responseJson;
+  }
 }
 
 export default StockTrackerResource;

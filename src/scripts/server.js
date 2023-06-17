@@ -67,6 +67,30 @@ const init = async () => {
     },
   });
 
+  server.route({
+    method: 'GET',
+    path: '/sort_products_by_stock',
+    handler: async (request, h) => {
+      const { keyword, categoryId } = request.query;
+      let results = '';
+      let response = '';
+
+      if (keyword) {
+        results = await db('table_product')
+          .whereILike('name', `%${keyword}%`)
+          .orderBy('stock', 'desc');
+        response = h.response(results);
+      } else {
+        results = await db('table_product')
+          .innerJoin('category', 'table_product.category_id', 'category.id')
+          .where('category_id', categoryId)
+          .orderBy('stock', 'desc');
+        response = h.response(results);
+      }
+      return response;
+    },
+  });
+
   const db = knex({
     client: 'mysql',
     connection: {
