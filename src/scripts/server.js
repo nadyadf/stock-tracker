@@ -139,6 +139,16 @@ const init = async () => {
     },
   });
 
+  server.route({
+    method: 'GET',
+    path: '/get_market',
+    handler: async (request, h) => {
+      const results = await request.database('table_market');
+      const response = h.response(results);
+      return response;
+    },
+  });
+
   const db = knex({
     client: 'mysql',
     connection: {
