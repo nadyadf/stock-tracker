@@ -1,7 +1,9 @@
 import StockTrackerResource from '../../data/stocktracker-resource';
 import UrlParser from '../../routes/url-parser';
 import DrawerInitiator from '../../utils/drawer-initiator';
-import { CreateProductItem, CreateCategoryLabel, CreateSortFeatureTemplate } from '../templates';
+import {
+  CreateProductItem, CreateCategoryLabel, CreateSortFeatureTemplate,
+} from '../templates';
 
 const SearchResult = {
   async render() {
@@ -99,6 +101,28 @@ const SearchResult = {
         });
       } else {
         searchResults = await StockTrackerResource.sortProductsByPrice('categoryId', categoryId);
+        resultTotal.innerText = `Total: ${searchResults.length}`;
+
+        searchResults.forEach((product) => {
+          resultContainer.innerHTML += CreateProductItem(product);
+        });
+      }
+    });
+
+    // Sort by date button
+    sortItemElements[2].addEventListener('click', async (e) => {
+      e.preventDefault();
+      resultContainer.innerHTML = '';
+
+      if (keyword) {
+        searchResults = await StockTrackerResource.sortProductsByDate('keyword', keyword);
+        resultTotal.innerText = `Total: ${searchResults.length}`;
+
+        searchResults.forEach((product) => {
+          resultContainer.innerHTML += CreateProductItem(product);
+        });
+      } else {
+        searchResults = await StockTrackerResource.sortProductsByDate('categoryId', categoryId);
         resultTotal.innerText = `Total: ${searchResults.length}`;
 
         searchResults.forEach((product) => {

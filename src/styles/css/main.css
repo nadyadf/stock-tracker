@@ -332,3 +332,10 @@ section#search-result--search {
   text-decoration: none;
   color: white;
 }
+
+/*--------------------------------------------------------------
+# Detail Product
+--------------------------------------------------------------*/
+.product-detail-container div {
+  padding-top: 30px;
+}

@@ -6,6 +6,9 @@ const init = async () => {
   const server = Hapi.server({
     port: 8000,
     host: 'localhost',
+    routes: {
+      cors: true,
+    },
   });
 
   server.route({
@@ -87,6 +90,43 @@ const init = async () => {
           .orderBy('stock', 'desc');
         response = h.response(results);
       }
+      return response;
+    },
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/sort_products_by_date',
+    handler: async (request, h) => {
+      const { keyword, categoryId } = request.query;
+      let results = '';
+      let response = '';
+
+      if (keyword) {
+        results = await db('table_product')
+          .whereILike('name', `%${keyword}%`)
+          .orderBy('expired', 'desc');
+        response = h.response(results);
+      } else {
+        results = await db('table_product')
+          .innerJoin('category', 'table_product.category_id', 'category.id')
+          .where('category_id', categoryId)
+          .orderBy('expired', 'desc');
+        response = h.response(results);
+      }
+      return response;
+    },
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/get_product_detail',
+    handler: async (request, h) => {
+      const { id } = request.query;
+      const result = await db('table_product')
+        .innerJoin('category', 'table_product.category_id', 'category.id')
+        .where('product_id', id);
+      const response = h.response(result);
       return response;
     },
   });
