@@ -42,6 +42,12 @@ class StockTrackerResource {
     const responseJson = response.json();
     return responseJson;
   }
+
+  static async showAllMarket() {
+    const response = await fetch(REST_API_ENDPOINT.GET_MARKET);
+    const responseJson = await response.json();
+    return responseJson;
+  }
 }
 
 export default StockTrackerResource;
