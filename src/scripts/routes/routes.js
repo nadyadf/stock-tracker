@@ -3,6 +3,7 @@ import ProductDetail from '../views/pages/product-detail';
 import Search from '../views/pages/search';
 import SearchResult from '../views/pages/search-result';
 import AllMarket from '../views/pages/markets';
+import MarketDetail from '../views/pages/markets-detail';
 
 const routes = {
   404: NotFoundPage,
@@ -11,6 +12,7 @@ const routes = {
   '/hasil_pencarian?category_id': SearchResult,
   '/detail_produk?product_id': ProductDetail,
   '/jelajah-toko': AllMarket,
+  '/detail_market?market_id': MarketDetail,
 };
 
 export default routes;

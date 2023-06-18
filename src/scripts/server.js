@@ -149,6 +149,24 @@ const init = async () => {
     },
   });
 
+  server.route({
+    method: 'GET',
+    path: '/get_market_detail',
+    handler: async (request, h) => {
+      const { marketId } = request.query;
+      let results = await db('table_product')
+        .innerJoin('table_market', 'table_product.market_id', 'table_market.id')
+        .where('market_id', marketId);
+
+      if (results.length === 0) {
+        results = await db('table_market')
+          .where('id', marketId);
+      }
+      const response = h.response(results);
+      return response;
+    },
+  });
+
   const db = knex({
     client: 'mysql',
     connection: {

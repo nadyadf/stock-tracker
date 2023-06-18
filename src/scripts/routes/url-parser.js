@@ -20,6 +20,7 @@ const UrlParser = {
       keyword: resource ? resource.split('?keyword=')[1] : null,
       categoryId: resource ? resource.split('?category_id=')[1] : null,
       productId: resource ? resource.split('?product_id=')[1] : null,
+      marketId: resource ? resource.split('?market_id=')[1] : null,
     };
   },
 
@@ -27,7 +28,8 @@ const UrlParser = {
     return (splitedUrl.resource ? `/${splitedUrl.resource}` : '/')
     + (splitedUrl.keyword ? '?keyword' : '')
     + (splitedUrl.categoryId ? '?category_id' : '')
-    + (splitedUrl.productId ? '?product_id' : '');
+    + (splitedUrl.productId ? '?product_id' : '')
+    + (splitedUrl.marketId ? '?market_id' : '');
   },
 };
 
