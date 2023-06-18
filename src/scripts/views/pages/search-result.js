@@ -1,5 +1,8 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-confusing-arrow */
 import StockTrackerResource from '../../data/stocktracker-resource';
 import UrlParser from '../../routes/url-parser';
+import DistanceCounter from '../../utils/distance-counter';
 import DrawerInitiator from '../../utils/drawer-initiator';
 import {
   CreateProductItem, CreateCategoryLabel, CreateSortFeatureTemplate,
@@ -65,6 +68,9 @@ const SearchResult = {
 
       resultTotal.innerText = `Total: ${searchResults.length}`;
       searchResults.forEach((product) => {
+        const { latitude, longitude } = product;
+        const distance = DistanceCounter(latitude, longitude, 'K');
+        product.distance = distance;
         resultContainer.innerHTML += CreateProductItem(product);
       });
     } else {
@@ -77,6 +83,9 @@ const SearchResult = {
 
       resultTotal.innerText = `Total: ${searchResults.length}`;
       searchResults.forEach((product) => {
+        const { latitude, longitude } = product;
+        const distance = DistanceCounter(latitude, longitude, 'K');
+        product.distance = distance;
         resultContainer.innerHTML += CreateProductItem(product);
       });
     }
@@ -97,6 +106,9 @@ const SearchResult = {
         resultTotal.innerText = `Total: ${searchResults.length}`;
 
         searchResults.forEach((product) => {
+          const { latitude, longitude } = product;
+          const distance = DistanceCounter(latitude, longitude, 'K');
+          product.distance = distance;
           resultContainer.innerHTML += CreateProductItem(product);
         });
       } else {
@@ -104,6 +116,9 @@ const SearchResult = {
         resultTotal.innerText = `Total: ${searchResults.length}`;
 
         searchResults.forEach((product) => {
+          const { latitude, longitude } = product;
+          const distance = DistanceCounter(latitude, longitude, 'K');
+          product.distance = distance;
           resultContainer.innerHTML += CreateProductItem(product);
         });
       }
@@ -119,6 +134,9 @@ const SearchResult = {
         resultTotal.innerText = `Total: ${searchResults.length}`;
 
         searchResults.forEach((product) => {
+          const { latitude, longitude } = product;
+          const distance = DistanceCounter(latitude, longitude, 'K');
+          product.distance = distance;
           resultContainer.innerHTML += CreateProductItem(product);
         });
       } else {
@@ -126,6 +144,9 @@ const SearchResult = {
         resultTotal.innerText = `Total: ${searchResults.length}`;
 
         searchResults.forEach((product) => {
+          const { latitude, longitude } = product;
+          const distance = DistanceCounter(latitude, longitude, 'K');
+          product.distance = distance;
           resultContainer.innerHTML += CreateProductItem(product);
         });
       }
@@ -141,6 +162,9 @@ const SearchResult = {
         resultTotal.innerText = `Total: ${searchResults.length}`;
 
         searchResults.forEach((product) => {
+          const { latitude, longitude } = product;
+          const distance = DistanceCounter(latitude, longitude, 'K');
+          product.distance = distance;
           resultContainer.innerHTML += CreateProductItem(product);
         });
       } else {
@@ -148,9 +172,24 @@ const SearchResult = {
         resultTotal.innerText = `Total: ${searchResults.length}`;
 
         searchResults.forEach((product) => {
+          const { latitude, longitude } = product;
+          const distance = DistanceCounter(latitude, longitude, 'K');
+          product.distance = distance;
           resultContainer.innerHTML += CreateProductItem(product);
         });
       }
+    });
+
+    // Sort by distance button
+    sortItemElements[1].addEventListener('click', async (e) => {
+      e.preventDefault();
+      const sortedProducts = searchResults.sort(
+        (p1, p2) => (p1.distance > p2.distance) ? 1 : (p1.distance < p2.distance) ? -1 : 0,
+      );
+      resultContainer.innerHTML = '';
+      sortedProducts.forEach((product) => {
+        resultContainer.innerHTML += CreateProductItem(product);
+      });
     });
   },
 };

@@ -17,6 +17,7 @@ const init = async () => {
     handler: async (request, h) => {
       const { keyword } = request.query;
       const results = await db('table_product')
+        .innerJoin('table_market', 'table_product.market_id', 'table_market.market_id')
         .whereILike('name', `%${keyword}%`);
       const response = h.response(results);
       return response;
@@ -40,6 +41,7 @@ const init = async () => {
       const { categoryId } = request.query;
       const results = await db('table_product')
         .innerJoin('category', 'table_product.category_id', 'category.id')
+        .innerJoin('table_market', 'table_product.market_id', 'table_market.market_id')
         .where('category_id', categoryId);
       const response = h.response(results);
       return response;
@@ -56,12 +58,14 @@ const init = async () => {
 
       if (keyword) {
         results = await db('table_product')
+          .innerJoin('table_market', 'table_product.market_id', 'table_market.market_id')
           .whereILike('name', `%${keyword}%`)
           .orderBy('price', 'asc');
         response = h.response(results);
       } else {
         results = await db('table_product')
           .innerJoin('category', 'table_product.category_id', 'category.id')
+          .innerJoin('table_market', 'table_product.market_id', 'table_market.market_id')
           .where('category_id', categoryId)
           .orderBy('price', 'asc');
         response = h.response(results);
@@ -80,12 +84,14 @@ const init = async () => {
 
       if (keyword) {
         results = await db('table_product')
+          .innerJoin('table_market', 'table_product.market_id', 'table_market.market_id')
           .whereILike('name', `%${keyword}%`)
           .orderBy('stock', 'desc');
         response = h.response(results);
       } else {
         results = await db('table_product')
           .innerJoin('category', 'table_product.category_id', 'category.id')
+          .innerJoin('table_market', 'table_product.market_id', 'table_market.market_id')
           .where('category_id', categoryId)
           .orderBy('stock', 'desc');
         response = h.response(results);
@@ -104,12 +110,14 @@ const init = async () => {
 
       if (keyword) {
         results = await db('table_product')
+          .innerJoin('table_market', 'table_product.market_id', 'table_market.market_id')
           .whereILike('name', `%${keyword}%`)
           .orderBy('expired', 'desc');
         response = h.response(results);
       } else {
         results = await db('table_product')
           .innerJoin('category', 'table_product.category_id', 'category.id')
+          .innerJoin('table_market', 'table_product.market_id', 'table_market.market_id')
           .where('category_id', categoryId)
           .orderBy('expired', 'desc');
         response = h.response(results);

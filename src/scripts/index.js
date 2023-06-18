@@ -1,6 +1,4 @@
 import 'regenerator-runtime';
-// import '@popperjs/core';
-// import 'bootstrap/js/dist/dropdown';
 import '../styles/css/main.css';
 import '../styles/scss/styles.scss';
 import '../styles/css/variables.css';
