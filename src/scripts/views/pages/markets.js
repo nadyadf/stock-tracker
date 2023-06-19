@@ -1,4 +1,5 @@
 import StockTrackerResource from '../../data/stocktracker-resource';
+import { checkCookie } from '../../utils/cookie-helper';
 import CreateMarketItem from '../templates/create-market-item ';
 
 const AllMarket = {
@@ -12,7 +13,7 @@ const AllMarket = {
   },
 
   async afterRender() {
-    // Fungsi ini akan dipanggil setelah render()
+    checkCookie();
     const markets = await StockTrackerResource.showAllMarket();
     const markContainer = document.querySelector('#market');
     markets.forEach((market) => {

@@ -357,3 +357,85 @@ section#search-result--search {
   flex-direction: column;
   row-gap: 10px;
 }
+
+/*--------------------------------------------------------------
+# About Page
+--------------------------------------------------------------*/
+.about-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.about {
+  margin-bottom: 40px;
+}
+
+
+.features ul {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+.features li {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.features li i {
+  margin-right: 10px;
+}
+
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.member {
+  flex-basis: calc(50% - 20px);
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.member:hover {
+  transform: scale(1.05);
+}
+
+.member img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.member h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.member p {
+  margin-bottom: 10px;
+}
+
+
+/*--------------------------------------------------------------
+# FAQs Page
+--------------------------------------------------------------*/
+.faq {
+  margin: 40px 15px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: slideInUp 1s ease-in-out;
+}

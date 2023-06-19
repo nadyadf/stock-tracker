@@ -2,6 +2,7 @@
 /* eslint-disable no-confusing-arrow */
 import StockTrackerResource from '../../data/stocktracker-resource';
 import UrlParser from '../../routes/url-parser';
+import { checkCookie } from '../../utils/cookie-helper';
 import DistanceCounter from '../../utils/distance-counter';
 import DrawerInitiator from '../../utils/drawer-initiator';
 import {
@@ -31,6 +32,7 @@ const SearchResult = {
   },
 
   async afterRender() {
+    checkCookie();
     // Initialization
     DrawerInitiator.init({
       className: 'show',

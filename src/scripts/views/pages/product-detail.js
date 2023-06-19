@@ -1,5 +1,6 @@
 import StockTrackerResource from '../../data/stocktracker-resource';
 import UrlParser from '../../routes/url-parser';
+import { checkCookie } from '../../utils/cookie-helper';
 import CreateProductDetailTemplate from '../templates/create-product-detail-template';
 
 const ProductDetail = {
@@ -11,6 +12,8 @@ const ProductDetail = {
   },
 
   async afterRender() {
+    checkCookie();
+
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const { productId } = url;
     const product = await StockTrackerResource.getProductDetail(productId);
