@@ -176,13 +176,13 @@ const init = async () => {
         .where('user_name', username);
       const user = querySearch[0];
       if (querySearch.length === 0) {
-        response = h.response({ status: 'failed', message: 'Nama pengguna tidak ditemukan' });
+        response = h.response({ success: false, message: 'Nama pengguna tidak ditemukan' });
       } else {
         hashedPassword = user.password;
         if (password === hashedPassword) {
-          response = h.response({ status: 'success', message: 'Berhasil masuk' });
+          response = h.response({ success: true, message: 'Berhasil masuk' });
         } else {
-          response = h.response({ status: 'failed', message: 'Kata sandi yang Anda masukkan salah' });
+          response = h.response({ success: false, message: 'Kata sandi yang Anda masukkan salah' });
         }
       }
       return response;
@@ -200,14 +200,14 @@ const init = async () => {
       let addUserQuery = '';
 
       if (searchQuery.length > 0) {
-        response = h.response({ status: 'failed', message: 'Nama pengguna sudah ada' });
+        response = h.response({ success: false, message: 'Nama pengguna sudah ada' });
       } else {
         addUserQuery = await db('table_user')
           .insert({
             username, password,
           });
         if (addUserQuery) {
-          response = h.response({ status: 'success', message: 'Berhasil terdaftar' });
+          response = h.response({ success: true, message: 'Berhasil terdaftar' });
         }
       }
       return response;
