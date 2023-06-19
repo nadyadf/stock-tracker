@@ -10,6 +10,8 @@ const REST_API_ENDPOINT = {
   GET_PRODUCT_DETAIL: (id) => `${CONFIG.BASE_URL}get_product_detail?id=${id}`,
   GET_MARKET: `${CONFIG.BASE_URL}get_market`,
   GET_MARKET_DETAIL: (id) => `${CONFIG.BASE_URL}get_market_detail?marketId=${id}`,
+  LOGIN: `${CONFIG.BASE_URL}login`,
+  REGISTER: `${CONFIG.BASE_URL}register`,
 };
 
 export default REST_API_ENDPOINT;

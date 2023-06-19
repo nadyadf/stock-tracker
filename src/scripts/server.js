@@ -6,6 +6,12 @@ const init = async () => {
   const server = Hapi.server({
     port: 8000,
     host: 'localhost',
+    routes: {
+      cors: {
+        origin: ['*'],
+        headers: ['Accept', 'Content-Type'],
+      },
+    },
   });
 
   server.route({
@@ -159,7 +165,54 @@ const init = async () => {
     },
   });
 
+  server.route({
+    method: 'POST',
+    path: '/login',
+    handler: async (request, h) => {
+      const { username, password } = request.payload;
+      let response = '';
+      let hashedPassword = '';
+      const querySearch = await db('table_user')
+        .where('user_name', username);
+      const user = querySearch[0];
+      if (querySearch.length === 0) {
+        response = h.response({ status: 'failed', message: 'Nama pengguna tidak ditemukan' });
+      } else {
+        hashedPassword = user.password;
+        if (password === hashedPassword) {
+          response = h.response({ status: 'success', message: 'Berhasil masuk' });
+        } else {
+          response = h.response({ status: 'failed', message: 'Kata sandi yang Anda masukkan salah' });
+        }
+      }
+      return response;
+    },
+  });
 
+  server.route({
+    method: 'POST',
+    path: '/register',
+    handler: async (request, h) => {
+      const { username, password } = request.payload;
+      let response = '';
+      const searchQuery = await db('table_user')
+        .where('user_name', username);
+      let addUserQuery = '';
+
+      if (searchQuery.length > 0) {
+        response = h.response({ status: 'failed', message: 'Nama pengguna sudah ada' });
+      } else {
+        addUserQuery = await db('table_user')
+          .insert({
+            username, password,
+          });
+        if (addUserQuery) {
+          response = h.response({ status: 'success', message: 'Berhasil terdaftar' });
+        }
+      }
+      return response;
+    },
+  });
 
   const db = knex({
     client: 'mysql',

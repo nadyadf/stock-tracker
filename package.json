@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "aos": "^2.3.4",
+    "bcrypt": "^5.1.0",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.5",
     "hapi": "^18.1.0",
@@ -20,7 +21,8 @@
     "knex": "^2.4.2",
     "mdb-ui-kit": "^6.3.1",
     "mysql": "^2.18.1",
-    "regenerator-runtime": "^0.13.11"
+    "regenerator-runtime": "^0.13.11",
+    "simplecrypt": "^0.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.22.1",

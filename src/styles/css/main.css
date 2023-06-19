@@ -339,3 +339,21 @@ section#search-result--search {
 .product-detail-container div {
   padding-top: 30px;
 }
+
+
+/*--------------------------------------------------------------
+# Login & Register Page
+--------------------------------------------------------------*/
+.login-container, .register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 100px;
+}
+
+.omb_loginForm{
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}

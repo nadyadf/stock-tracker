@@ -1,3 +1,4 @@
+/* eslint-disable quote-props */
 import REST_API_ENDPOINT from '../globals/rest-api-endpoint';
 
 class StockTrackerResource {
@@ -51,6 +52,44 @@ class StockTrackerResource {
 
   static async getMarketDetail(id) {
     const response = await fetch(REST_API_ENDPOINT.GET_MARKET_DETAIL(id));
+    const responseJson = response.json();
+    return responseJson;
+  }
+
+  static async loginAuth(username, password) {
+    const response = await fetch(
+      REST_API_ENDPOINT.LOGIN,
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username,
+          password,
+        }),
+      },
+    );
+    const responseJson = response.json();
+    return responseJson;
+  }
+
+  static async register(username, password) {
+    const response = await fetch(
+      REST_API_ENDPOINT.REGISTER,
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username,
+          password,
+        }),
+      },
+    );
     const responseJson = response.json();
     return responseJson;
   }

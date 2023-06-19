@@ -9,17 +9,31 @@ const getCookie = (cname) => {
     let c = ca[i];
     while (c.charAt(0) === ' ') {
       c = c.substring(1);
-      if (c.indexOf(name) === 0) {
-        return c.substring(name.length, c.length);
-      }
+    }
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
     }
   }
+  return '';
 };
 
 const checkCookie = () => {
-  const username = getCookie('username');
-
-  return username;
+  const user = getCookie('username');
+  const loginbutton = document.querySelector('#btn-login');
+  console.log(user);
+  if (user) {
+    loginbutton.style.display = 'none';
+    return;
+  }
+  const currentUrl = window.location.href;
+  window.location.replace(`${currentUrl}#/masuk`);
 };
 
-export { getCookie, checkCookie };
+const setCookie = (cname, cvalue, exdays) => {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 1000));
+  const expires = `expires=${d.toUTCString()}`;
+  document.cookie = `${cname}=${cvalue};${expires};path:/`;
+};
+
+export { getCookie, checkCookie, setCookie };
