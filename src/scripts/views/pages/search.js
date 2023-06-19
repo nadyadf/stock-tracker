@@ -1,3 +1,5 @@
+import { checkCookie } from "../../utils/cookie-helper";
+
 const Search = {
   async render() {
     return `
@@ -16,6 +18,8 @@ const Search = {
   },
 
   async afterRender() {
+    console.log(checkCookie);
+
     const successCallback = async (position) => {
       const currentLat = position.coords.latitude;
       const currentLng = position.coords.longitude;
