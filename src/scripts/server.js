@@ -159,15 +159,7 @@ const init = async () => {
     },
   });
 
-  server.route({
-    method: 'POST',
-    path: '/login',
-    handler: (request, h) => {
-      const { username } = request.payload;
-      const response = h.response(username);
-      return response;
-    },
-  });
+
 
   const db = knex({
     client: 'mysql',
