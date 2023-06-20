@@ -123,6 +123,7 @@ h6 {
 
 #btn-login {
   margin-right: 10px;
+  display: none;
 }
 
 .mobile-nav-toggle {
@@ -276,7 +277,7 @@ section#search-result--search {
 .result-total {
   text-align: center;
 }
-.result {
+.result, .product-list-container {
   margin: 3rem 2rem;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -438,4 +439,11 @@ section#search-result--search {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   animation: slideInUp 1s ease-in-out;
+}
+
+/*--------------------------------------------------------------
+# Market Detail Page
+--------------------------------------------------------------*/
+.market-detail-container {
+  padding-top: 50px;
 }

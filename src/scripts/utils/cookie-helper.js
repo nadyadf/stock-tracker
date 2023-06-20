@@ -20,13 +20,11 @@ const getCookie = (cname) => {
 const checkCookie = () => {
   const user = getCookie('username');
   const loginbutton = document.querySelector('#btn-login');
-  console.log(user);
   if (user) {
     loginbutton.style.display = 'none';
     return;
   }
-  const currentUrl = window.location.href;
-  window.location.replace(`${currentUrl}#/masuk`);
+  window.location.replace('#/masuk');
 };
 
 const setCookie = (cname, cvalue, exdays) => {

@@ -2,6 +2,7 @@ import UrlParser from '../routes/url-parser';
 import DrawerInitiator from '../utils/drawer-initiator';
 import routes from '../routes/routes';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { checkCookie } from '../utils/cookie-helper';
 
 class App {
   constructor({
@@ -26,11 +27,10 @@ class App {
 
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
-    console.log(url);
     const page = routes[url];
     this._content.innerHTML = await page.render();
-
     await page.afterRender();
+    checkCookie();
   }
 }
 

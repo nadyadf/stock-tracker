@@ -204,7 +204,7 @@ const init = async () => {
       } else {
         addUserQuery = await db('table_user')
           .insert({
-            username, password,
+            user_name: username, password,
           });
         if (addUserQuery) {
           response = h.response({ success: true, message: 'Berhasil terdaftar' });
