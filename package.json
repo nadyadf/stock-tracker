@@ -7,7 +7,7 @@
     "start-dev": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "http-serve": "http-server dist",
-    "web-serve": "nodemon ./src/scripts/server.js"
+    "web-serve": "node ./src/scripts/server.js"
   },
   "author": "",
   "license": "ISC",
