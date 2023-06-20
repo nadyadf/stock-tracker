@@ -4,14 +4,14 @@ const About = {
     <div class="about-container">
       <section class="about">
         <h2>Apa itu Cari Dulu?</h2>
-        <p>Cari Dulu adalah sebuah platform online yang mempermudah pengguna dalam mencari informasi persediaan produk yang dijual di sekitar dengan cepat dan akurat. Kami juga menyediakan wadah bagi penjual untuk menjangkau toko mereka secara lebih luas melalui platform kami.</p>
+        <p>Cari Dulu adalah sebuah platform yang menyediakan informasi real-time tentang ketersediaan stok barang di berbagai toko sehingga mengurangi kekhawatiran sebelum pergi berbelanja apabila produk yang dicari tidak tersedia. Platform ini juga memungkinkan penjual untuk memperluas jangkauan toko mereka agar lebih dikenal serta mempermudah mereka dalam mengelola persediaan produk yang dijual.</p>
       </section>
 
       <section class="features">
         <h2>Fitur Utama</h2>
         <ul>
           <li><i class="bi-search"></i> Pencarian Produk</li>
-          <li><i class="bi-geo-alt-fill"></i> Lokasi Toko</li>
+          <li><i class="bi-geo-alt-fill"></i> Toko terdekat</li>
           <li><i class="bi-tags-fill"></i> Informasi Persediaan</li>
           <li><i class="bi-chat-left-dots"></i> Ulasan Pengguna</li>
         </ul>

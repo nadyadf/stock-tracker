@@ -7,7 +7,7 @@ const Search = {
         <div class="search-container">
         <h2>Temukan produk di sekitarmu!</h2>
         <div class="input-group mb-3">
-          <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Masukkan kata kunci [contoh: Good Day, Kopi Kapal Api]" aria-label="" aria-describedby="basic-addon2">
+          <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Masukkan kata kunci [contoh: Good Day, Kopi Kapal Api]" aria-label="" aria-describedby="basic-addon2" autocomplete="off">
           <div class="input-group-append">
             <button class="bi-search btn-search" type="submit"></button>
           </div>

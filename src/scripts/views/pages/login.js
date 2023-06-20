@@ -43,7 +43,7 @@ const Login = {
       if (!response.success) {
         return;
       }
-      setCookie('username', username, 1);
+      setCookie('username', username, 5);
       window.location.replace('/');
     });
   },
